@@ -1,0 +1,22 @@
+@import "./_variables"
+
+@mixin transparentButton()
+  border: none
+  background-color: transparent
+
+html
+  font-size: 62.5%
+
+*
+  box-sizing: border-box
+  font-size: $size
+  font-family: $family, sans-serif
+  font-weight: $normal-weight
+
+header
+  display: flex
+  padding: 3rem 2rem
+  justify-content: space-between
+  align-items: center
+  .button__menu
+    @include transparentButton()
