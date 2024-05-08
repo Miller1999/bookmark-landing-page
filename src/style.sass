@@ -3,6 +3,14 @@
 @mixin transparentButton()
   border: none
   background-color: transparent
+  padding: 0
+  width: 100%
+  height: 100%
+@mixin displayType($display,$justify,$align,$direction)
+  display: $display
+  justify-content: $justify
+  align-items: $align
+  flex-direction: $direction
 
 html
   font-size: 62.5%
@@ -12,11 +20,61 @@ html
   font-size: $size
   font-family: $family, sans-serif
   font-weight: $normal-weight
+  color: $Neutral-VeryDarkBlue
 
 header
-  display: flex
+  @include displayType(flex,space-between,center,row )
   padding: 3rem 2rem
-  justify-content: space-between
-  align-items: center
-  .button__menu
-    @include transparentButton()
+  .menu__container
+    width: 2rem
+    height: 2rem
+    .button__menu
+      @include transparentButton()
+      img
+        width: 100%
+        height: 100%
+
+main
+  @include displayType(flex,flex-start,center,column )
+  padding: 3rem 0rem
+  .presentation__container
+    .imgPre__container
+      position: relative
+      .semicircle
+        position: absolute
+        background: $primary-blue
+        width: 100%
+        height: 27vh
+        right: -20%
+        top: 20%
+        z-index: -1
+        border-radius: 0 0 0 30%
+    .preInfo__container
+      @include displayType(flex,flex-start,center,column )
+      padding: 3rem 2rem
+      text-align: center
+      h1
+        font-size: 3rem
+        font-weight: $strong-weight
+      p
+        color: $Neutral-GrayishBlue
+        font-size: 1.5rem
+        line-height: 2.5rem
+      .buttonsPre__container
+        @include displayType(flex,center,center,row )
+        gap: 1rem
+        font-size: 1.2rem
+        button
+          border: none
+          background-color: $primary-blue
+          color: white
+          font-weight: $strong-weight
+          padding: 1.5rem 1rem
+          border-radius: 1rem
+          box-shadow: 0px 1rem .5rem 0rem transparentize(black,0.75 )
+        button:last-child
+          color: $Neutral-VeryDarkBlue
+          background: white
+
+    img
+      width: 100%
