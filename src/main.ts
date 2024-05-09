@@ -4,8 +4,17 @@ import Logo from "./assets/logo-bookmark.svg";
 import MenuIcon from "./assets/icon-hamburger.svg";
 import PreImg from "./assets/illustration-hero.svg";
 import tab1 from "./assets/illustration-features-tab-1.svg";
+import Chrome from "./assets/logo-chrome.svg";
+import Firefox from "./assets/logo-firefox.svg";
+import Opera from "./assets/logo-opera.svg";
 
 const app = document.querySelector("#app");
+
+const browsers = [
+	{ name: "Chrome", version: "62", img: Chrome },
+	{ name: "Firefox", version: "55", img: Firefox },
+	{ name: "Opera", version: "46", img: Opera },
+];
 
 const createElement = (
 	tagName: string,
@@ -70,6 +79,25 @@ const createDiv = (
 const createButton = (text: string): HTMLElement => {
 	const button = createElement("button", "", text);
 	return button;
+};
+
+const createCard = (img: string, name: string, version: string) => {
+	const logoCard = createElement("img", "", "", { src: img });
+	const browserName = createElement("p", "", `Add to ${name}`);
+	const browserVersion = createElement(
+		"span",
+		"",
+		`Minimum version ${version}`
+	);
+	const infoContainer = createDiv("infoCard__container", [
+		logoCard,
+		browserName,
+		browserVersion,
+	]);
+	const button = createButton("Add & Install Extension");
+	const buttonContainer = createDiv("buttonCard__container", [button]);
+	const card = createDiv("browser__card", [infoContainer, buttonContainer]);
+	return card;
 };
 
 const createMain = (): HTMLElement => {
@@ -144,7 +172,27 @@ const createMain = (): HTMLElement => {
 		featuresInfoContainer,
 		featureTab,
 	]);
-	main.append(presentation, features);
+	const titleDownloads = createElement("h2", "", "Download the extension");
+	const descriptionDownloads = createElement(
+		"p",
+		"",
+		"We’ve got more browsers in the pipeline. Please do let us know if you’ve got a favourite you’d like us to prioritize."
+	);
+	const downloadsInfoContainer = createDiv("downloadsInfo__container", [
+		titleDownloads,
+		descriptionDownloads,
+	]);
+	const browserCards: HTMLElement[] = [];
+	browsers.forEach((browser) => {
+		const newCard = createCard(browser.img, browser.name, browser.version);
+		browserCards.push(newCard);
+	});
+	const cards = createDiv("cards__container", browserCards);
+	const downloads = createSection("downloads__container", [
+		downloadsInfoContainer,
+		cards,
+	]);
+	main.append(presentation, features, downloads);
 	return main;
 };
 

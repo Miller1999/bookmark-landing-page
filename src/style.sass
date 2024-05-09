@@ -154,3 +154,56 @@ main
             color: $Neutral-GrayishBlue
             font-size: 1.5rem
             line-height: 2.5rem
+  .downloads__container
+    @include displayType(flex,normal,center,column )
+    padding: 3rem 0rem
+    .downloadsInfo__container
+      @include displayType(flex,normal,center ,column )
+      text-align: center
+      padding: 3rem 2rem
+      h2
+        font-size: 3rem
+        font-weight: $strong-weight
+      p
+        color: $Neutral-GrayishBlue
+        font-size: 1.5rem
+        line-height: 2.5rem
+    .cards__container
+      @include displayType(flex,normal,center,column)
+      padding: 0rem 2rem
+      gap: 5rem
+      .browser__card
+        @include displayType(flex,center,center,column )
+        width: 100%
+        height: fit-content
+        background: white
+        box-shadow: 0px 5px 10px 0px transparentize(black, 0.75)
+        gap: 3rem
+        padding: 2rem
+        overflow-x: hidden
+        border-radius: 10px
+        .infoCard__container
+          @include displayType(flex,center,center,column )
+          width: 100%
+          img
+            width: 50%
+          p
+            margin: 0
+            margin-top: 3rem
+            font-weight: $strong-weight
+          span
+            font-size: 1.2rem
+            color: $Neutral-GrayishBlue
+        .buttonCard__container
+          @include displayType(flex,center,center,row)
+          width: 200%
+          border-top: 4px dotted transparentize($Neutral-GrayishBlue, 0.5)
+          button
+            border: none
+            color: white
+            background: $primary-blue
+            padding: 1.5rem 2rem
+            font-size: 1.2rem
+            margin-top: 2rem
+            border-radius: 10px
+            font-weight: $strong-weight
