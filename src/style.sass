@@ -15,6 +15,9 @@
 html
   font-size: 62.5%
 
+#app
+  overflow-x: hidden
+
 *
   box-sizing: border-box
   font-size: $size
@@ -37,6 +40,8 @@ header
 main
   @include displayType(flex,flex-start,center,column )
   padding: 3rem 0rem
+  img
+    width: 100%
   .presentation__container
     .imgPre__container
       position: relative
@@ -75,6 +80,77 @@ main
         button:last-child
           color: $Neutral-VeryDarkBlue
           background: white
-
-    img
+  .features__container
+    @include displayType(flex,normal,center,column )
+    padding: 3rem 0rem
+    .featuresInfo__container
+      @include displayType(flex,normal,center ,column )
+      text-align: center
+      padding: 3rem 2rem
+      h2
+        font-size: 3rem
+        font-weight: $strong-weight
+      p
+        color: $Neutral-GrayishBlue
+        font-size: 1.5rem
+        line-height: 2.5rem
+    .feature__tab
+      @include displayType(flex,normal,center,column )
+      padding: 3rem 20px
       width: 100%
+      gap: 5rem
+      .tabs
+        @include displayType(flex,normal,center ,column )
+        margin: 0
+        padding: 0
+        width: 100%
+        .selected__tab
+          color: $Neutral-VeryDarkBlue
+          .line__tab
+            opacity: 1
+        li
+          cursor: pointer
+          position: relative
+          padding: 2rem 0rem
+          text-align: center
+          width: 100%
+          color: $Neutral-GrayishBlue
+          border-top: 1px solid $Neutral-GrayishBlue
+          border-bottom: 1px solid $Neutral-GrayishBlue
+          list-style: none
+          .line__tab
+            position: absolute
+            bottom: 0
+            left: 50%
+            transform: translateX(-50%)
+            width: 50%
+            height: 5px
+            background: $primary-red
+            opacity: 0
+        li:first-child
+          border-bottom: none
+        li:last-child
+          border-top: none
+      .infoTab__container
+        @include displayType(flex,normal,center ,column )
+        gap: 6rem
+        .imgTab__container
+          position: relative
+          .semicircle
+            position: absolute
+            background: $primary-blue
+            width: 100%
+            height: 27vh
+            left: -20%
+            top: 20%
+            z-index: -1
+            border-radius: 0 0 30% 0
+        .info__container
+          text-align: center
+          h3
+            font-size: 2rem
+            font-weight: $strong-weight
+          p
+            color: $Neutral-GrayishBlue
+            font-size: 1.5rem
+            line-height: 2.5rem

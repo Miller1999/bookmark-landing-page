@@ -3,6 +3,7 @@ import "./style.sass";
 import Logo from "./assets/logo-bookmark.svg";
 import MenuIcon from "./assets/icon-hamburger.svg";
 import PreImg from "./assets/illustration-hero.svg";
+import tab1 from "./assets/illustration-features-tab-1.svg";
 
 const app = document.querySelector("#app");
 
@@ -10,7 +11,6 @@ const createElement = (
 	tagName: string,
 	className: string = "",
 	html: string = "",
-	textContent: string = "",
 	attributes: { [key: string]: string } = {}
 ): HTMLElement => {
 	const element = document.createElement(tagName);
@@ -18,7 +18,6 @@ const createElement = (
 		element.classList.add(...className.split(" "));
 	}
 	element.innerHTML = html;
-	element.textContent = textContent;
 	for (const key in attributes) {
 		if (attributes.hasOwnProperty(key)) {
 			element.setAttribute(key, attributes[key]);
@@ -30,7 +29,7 @@ const createElement = (
 const createHeader = (): HTMLElement => {
 	const header = createElement("header");
 	const logoContainer = createElement("div", "logo__container");
-	const logo = createElement("img", "", "", "", { src: Logo });
+	const logo = createElement("img", "", "", { src: Logo });
 	const menuContainer = createElement("div", "menu__container");
 	const menuButton = createElement(
 		"button",
@@ -69,22 +68,21 @@ const createDiv = (
 };
 
 const createButton = (text: string): HTMLElement => {
-	const button = createElement("button", "", "", text);
+	const button = createElement("button", "", text);
 	return button;
 };
 
 const createMain = (): HTMLElement => {
 	const main = createElement("main");
-	const preImg = createElement("img", "", "", "", { src: PreImg });
+	const preImg = createElement("img", "", "", { src: PreImg });
 	const semiCirclebackground = createDiv("semicircle");
 	const imgContainer = createDiv("imgPre__container", [
 		semiCirclebackground,
 		preImg,
 	]);
-	const titlePre = createElement("h1", "", "", "A Simple Bookmark Manager");
+	const titlePre = createElement("h1", "", "A Simple Bookmark Manager");
 	const descriptionPre = createElement(
 		"p",
-		"",
 		"",
 		"A clean and simple interface to organize your favourite websites. Open a new browser tab and see your sites load instantly. Try it for free."
 	);
@@ -103,7 +101,50 @@ const createMain = (): HTMLElement => {
 		imgContainer,
 		preInfoContainer,
 	]);
-	main.append(presentation);
+	const titleFeatures = createElement("h2", "", "Features");
+	const descriptionFeatures = createElement(
+		"p",
+		"",
+		" Our aim is to make it quick and easy for you to access your favourite websites. Your bookmarks sync between your devices so you can access them on the go."
+	);
+	const featuresInfoContainer = createDiv("featuresInfo__container", [
+		titleFeatures,
+		descriptionFeatures,
+	]);
+	const tabs = createElement(
+		"ul",
+		"tabs",
+		`
+		<li class="selected__tab">Simple Bookmarking<div class="line__tab"></div></li>
+		<li>Speedy Searching<div class="line__tab"></div></li>
+		<li>Easy Sharing<div class="line__tab"></div></li>
+	`
+	);
+	const imgTab = createElement("img", "", "", { src: tab1 });
+	const imgContainerTab = createDiv("imgTab__container", [
+		imgTab,
+		semiCirclebackground,
+	]);
+	const titleTab = createElement("h3", "", "Bookmark in one click");
+	const descriptionTab = createElement(
+		"p",
+		"",
+		"Organize your bookmarks however you like. Our simple drag-and-drop interface gives you complete control over how you manage your favourite sites."
+	);
+	const informationContainer = createDiv("info__container", [
+		titleTab,
+		descriptionTab,
+	]);
+	const infoTab = createDiv("infoTab__container", [
+		imgContainerTab,
+		informationContainer,
+	]);
+	const featureTab = createDiv("feature__tab", [tabs, infoTab]);
+	const features = createSection("features__container", [
+		featuresInfoContainer,
+		featureTab,
+	]);
+	main.append(presentation, features);
 	return main;
 };
 
