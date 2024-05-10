@@ -7,6 +7,7 @@ import tab1 from "./assets/illustration-features-tab-1.svg";
 import Chrome from "./assets/logo-chrome.svg";
 import Firefox from "./assets/logo-firefox.svg";
 import Opera from "./assets/logo-opera.svg";
+import Arrow from "./assets/icon-arrow.svg";
 
 const app = document.querySelector("#app");
 
@@ -14,6 +15,25 @@ const browsers = [
 	{ name: "Chrome", version: "62", img: Chrome },
 	{ name: "Firefox", version: "55", img: Firefox },
 	{ name: "Opera", version: "46", img: Opera },
+];
+
+const FAQS = [
+	{
+		ques: "What is Bookmark?",
+		ans: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt justo eget ultricies fringilla. Phasellus blandit ipsum quis quam ornare mattis.",
+	},
+	{
+		ques: "How can I request a new browser?",
+		ans: "Vivamus luctus eros aliquet convallis ultricies. Mauris augue massa, ultricies non ligula. Suspendisse imperdiet. Vivamus luctus eros aliquet convallis ultricies. Mauris augue massa, ultricies non ligula. Suspendisse imperdie tVivamus luctus eros aliquet convallis ultricies. Mauris augue massa, ultricies non ligula. Suspendisse imperdiet.",
+	},
+	{
+		ques: "Is there a mobile app?",
+		ans: "Sed consectetur quam id neque fermentum accumsan. Praesent luctus vestibulum dolor, ut condimentum urna vulputate eget. Cras in ligula quis est pharetra mattis sit amet pharetra purus. Sed sollicitudin ex et ultricies bibendum.",
+	},
+	{
+		ques: "What about other Chromium browsers?",
+		ans: "Integer condimentum ipsum id imperdiet finibus. Vivamus in placerat mi, at euismod dui. Aliquam vitae neque eget nisl gravida pellentesque non ut velit.",
+	},
 ];
 
 const createElement = (
@@ -81,7 +101,11 @@ const createButton = (text: string): HTMLElement => {
 	return button;
 };
 
-const createCard = (img: string, name: string, version: string) => {
+const createCard = (
+	img: string,
+	name: string,
+	version: string
+): HTMLElement => {
 	const logoCard = createElement("img", "", "", { src: img });
 	const browserName = createElement("p", "", `Add to ${name}`);
 	const browserVersion = createElement(
@@ -100,6 +124,17 @@ const createCard = (img: string, name: string, version: string) => {
 	return card;
 };
 
+const createFaq = (question: string, answer: string): HTMLElement => {
+	const questionTitle = createElement("p", "", question);
+	const arrow = createElement("img", "", "", { src: Arrow });
+	const answerDescription = createElement("p", "", answer);
+	const questionCont = createDiv("question__container", [questionTitle, arrow]);
+	const answerCont = createDiv("answer__container hidden-answer", [
+		answerDescription,
+	]);
+	const faq = createDiv("faq__container", [questionCont, answerCont]);
+	return faq;
+};
 const createMain = (): HTMLElement => {
 	const main = createElement("main");
 	const preImg = createElement("img", "", "", { src: PreImg });
@@ -192,7 +227,29 @@ const createMain = (): HTMLElement => {
 		downloadsInfoContainer,
 		cards,
 	]);
-	main.append(presentation, features, downloads);
+	const titleFaqs = createElement("h2", "", "Frequently Asked Questions");
+	const descriptionFaqs = createElement(
+		"p",
+		"",
+		"Here are some of our FAQs. If you have any other questions you’d like answered please feel free to email us."
+	);
+	const infoFaqs = createDiv("infoFaqs__container", [
+		titleFaqs,
+		descriptionFaqs,
+	]);
+	const faqsCards: HTMLElement[] = [];
+	FAQS.forEach((faq) => {
+		const newFaq = createFaq(faq.ques, faq.ans);
+		faqsCards.push(newFaq);
+	});
+	const faqsCardsContainer = createDiv("faqsCards__container", faqsCards);
+	const moreInfoButton = createButton("More Info");
+	const faqs = createSection("faqs__container", [
+		infoFaqs,
+		faqsCardsContainer,
+		moreInfoButton,
+	]);
+	main.append(presentation, features, downloads, faqs);
 	return main;
 };
 

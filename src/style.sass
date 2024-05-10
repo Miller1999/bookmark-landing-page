@@ -207,3 +207,55 @@ main
             margin-top: 2rem
             border-radius: 10px
             font-weight: $strong-weight
+  .faqs__container
+    @include displayType(flex,normal,center ,column )
+    padding: 3rem 0rem
+    button
+      background: $primary-blue
+      border: none
+      border-radius: 1rem
+      padding: 1.5rem 2rem
+      color: white
+      font-weight: $strong-weight
+      font-size: 1.2rem
+      margin-top: 2rem
+    .infoFaqs__container
+      @include displayType(flex,normal,center ,column )
+      text-align: center
+      padding: 3rem 2rem
+      h2
+        font-size: 3rem
+        font-weight: $strong-weight
+      p
+        color: $Neutral-GrayishBlue
+        font-size: 1.5rem
+        line-height: 2.5rem
+    .faqsCards__container
+      @include displayType(flex,normal,center ,column)
+      padding: 0rem 2rem
+      gap: 1rem
+      .faq__container
+        @include displayType(flex,normal,center ,column)
+        .question__container,.answer__container
+          width: 100%
+          p
+            font-size: 1.5rem
+        .question__container
+          @include displayType(flex,space-between,center ,row)
+          border-bottom: 1px solid transparentize($Neutral-GrayishBlue,0.5)
+          img
+            cursor: pointer
+            width: 20px
+          .arrow-red
+            transform: rotateZ(180deg)
+            filter: invert(51%) sepia(26%) saturate(6331%) hue-rotate(328deg) brightness(98%) contrast(98%)
+        .answer__container
+          padding: 1rem 0rem
+          height: fit-content
+          visibility: visible
+          p
+            margin: 0
+            color: $Neutral-GrayishBlue
+        .hidden-answer
+          height: 0
+          visibility: hidden
