@@ -8,6 +8,7 @@ import Chrome from "./assets/logo-chrome.svg";
 import Firefox from "./assets/logo-firefox.svg";
 import Opera from "./assets/logo-opera.svg";
 import Arrow from "./assets/icon-arrow.svg";
+import Error from "./assets/icon-error.svg";
 
 const app = document.querySelector("#app");
 
@@ -135,6 +136,17 @@ const createFaq = (question: string, answer: string): HTMLElement => {
 	const faq = createDiv("faq__container", [questionCont, answerCont]);
 	return faq;
 };
+
+const createForm = (elements: HTMLElement[] = []): HTMLElement => {
+	const form = createElement("form");
+	if (elements.length !== 0) {
+		elements.forEach((element) => {
+			form.append(element);
+		});
+	}
+	return form;
+};
+
 const createMain = (): HTMLElement => {
 	const main = createElement("main");
 	const preImg = createElement("img", "", "", { src: PreImg });
@@ -249,7 +261,26 @@ const createMain = (): HTMLElement => {
 		faqsCardsContainer,
 		moreInfoButton,
 	]);
-	main.append(presentation, features, downloads, faqs);
+	const stadisticText = createElement("span", "", "35,000+ already joined");
+	const formTitle = createElement(
+		"h2",
+		"",
+		"Stay up-to-date with what we’re doing"
+	);
+	const infoForm = createDiv("infoForm__container", [stadisticText, formTitle]);
+	const input = createElement("input", "", "", {
+		placeholder: "Enter your email address",
+		type: "email",
+	});
+	const errorIcon = createElement("img", "", "", { src: Error });
+	const message = createElement("span", "", "Whooops, make sure it's an email");
+	const inputDiv = createDiv("input__container", [input, errorIcon, message]);
+	const formButton = createButton("Contact Us");
+
+	const form = createForm([inputDiv, formButton]);
+
+	const formContainer = createSection("form__container", [infoForm, form]);
+	main.append(presentation, features, downloads, faqs, formContainer);
 	return main;
 };
 
