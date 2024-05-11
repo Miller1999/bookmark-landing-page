@@ -273,7 +273,7 @@ main
           width: 200%
           border-top: 4px dotted transparentize($Neutral-GrayishBlue, 0.5)
           button
-            border: none
+            border: 1px solid transparent
             color: white
             background: $primary-blue
             padding: 1.5rem 2rem
@@ -325,6 +325,10 @@ main
           .arrow-red
             transform: rotateZ(180deg)
             filter: invert(51%) sepia(26%) saturate(6331%) hue-rotate(328deg) brightness(98%) contrast(98%)
+        .question__container:hover
+          cursor: pointer
+          p
+            color: $primary-red
         .answer__container
           transition: all .3s
           padding: 1rem 0rem
@@ -488,3 +492,76 @@ footer
           right: -40%
           top: 30%
           border-radius: 0 0 0 40%
+    .features__container
+      padding: 0rem 10rem
+      .featuresInfo__container
+        width: 50%
+      .feature__tab
+        .tabs
+          flex-direction: row
+          li
+            border: none
+            border-bottom: 1px solid $Neutral-GrayishBlue
+          li:hover
+            color: $primary-red
+          li:first-child
+            border-bottom: 1px solid $Neutral-GrayishBlue
+        .infoTab__container
+          flex-direction: row
+          .imgTab__container,.info__container
+            width: 50%
+          .imgTab__container
+            .semicircle
+              height: 30rem
+              top: 40%
+              left: -40%
+          .info__container
+            text-align: left
+    .downloads__container
+      padding: 3rem 10rem
+      .downloadsInfo__container
+        width: 60%
+      .cards__container
+        flex-direction: row
+        .browser__card:nth-child(2)
+          margin-top: 5rem
+        .browser__card:last-child
+          margin-top: 10rem
+        .browser__card
+          button
+            transition: all .3s
+          button:hover
+            transition: all .3s
+            color: $primary-blue
+            border: 1px solid $primary-blue
+            background: transparent
+    .faqs__container
+      padding: 3rem 10rem
+      .infoFaqs__container
+        width: 50%
+      .faqsCards__container
+        width: 50%
+    .form__container
+      .infoForm__container
+        width: 30%
+      form
+        flex-direction: row
+        width: 30%
+        button
+          width: 50%
+        button:hover
+          border: 1px solid $primary-red
+          color: $primary-red
+          background: white
+        .error
+          img
+            top: 13%
+  footer
+    flex-direction: row
+    justify-content: space-evenly
+    .footer__list
+      flex-direction: row
+      li
+        cursor: pointer
+      li:hover
+        color: $primary-red
