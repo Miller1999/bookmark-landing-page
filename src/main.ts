@@ -14,6 +14,8 @@ const header = createHeader();
 const menu = createMenu();
 const main = createMain();
 const footer = createFooter();
-app?.append(header, menu, main, footer);
+window.innerWidth < 1280
+	? app?.append(header, menu, main, footer)
+	: app?.append(header, main, footer);
 
 initFunctions();

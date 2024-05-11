@@ -172,9 +172,17 @@ const createHeader = (): HTMLElement => {
     <img src=${MenuIcon} alt="menu"/>
   `
 	);
+	const list = createList("menu__list", ["FEATURES", "PRICING", "CONTACT"]);
+	const loginButton = createButton("Login");
+	const menu = createDiv("menu__header", [list, loginButton]);
+
 	logoContainer.appendChild(logo);
 	menuContainer.append(menuButton);
-	header.append(logoContainer, menuContainer);
+	if (window.innerWidth > 1280) {
+		header.append(logoContainer, menuContainer);
+	} else {
+		header.append(logoContainer, menu);
+	}
 	return header;
 };
 

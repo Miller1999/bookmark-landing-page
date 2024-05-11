@@ -344,6 +344,7 @@ main
     @include displayType(flex,normal,center,column )
     padding: 3rem 2rem
     background: $primary-blue
+    width: 100%
     .infoForm__container
       padding: 0rem 2rem
       text-align: center
@@ -421,3 +422,38 @@ footer
   .socialMedia__container
     display: flex
     gap: 5rem
+
+@include desktop()
+  header
+    padding: 5rem 10rem
+    height: 200px
+    .menu__header
+      @include displayType(flex,normal,center,row)
+      gap: 5rem
+      .menu__list
+        @include displayType(flex,center,center,row)
+        padding: 0
+        margin: 0
+        gap: 5rem
+        li
+          transition: all .3s
+          cursor: pointer
+          list-style: none
+        li:hover
+          transition: all .3s
+
+          color: $primary-red
+    button
+      transition: all .3s
+
+      padding: 1rem 30px
+      border: 2px solid transparent
+      background: $primary-red
+      border-radius: 10px
+      color: white
+    button:hover
+      transition: all .3s
+
+      color: $primary-red
+      background: transparent
+      border: 2px solid $primary-red

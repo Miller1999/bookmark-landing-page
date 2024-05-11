@@ -9,3 +9,10 @@ $size: 18px
 $family: "Rubik"
 $normal-weight: 400
 $strong-weight: 500
+// Queries
+
+$desktopSize: 1280px
+
+@mixin desktop()
+  @media (min-width:$desktopSize)
+    @content
