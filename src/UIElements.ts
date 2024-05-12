@@ -178,7 +178,7 @@ const createHeader = (): HTMLElement => {
 
 	logoContainer.appendChild(logo);
 	menuContainer.append(menuButton);
-	if (window.innerWidth > 1280) {
+	if (window.innerWidth < 1280) {
 		header.append(logoContainer, menuContainer);
 	} else {
 		header.append(logoContainer, menu);
@@ -284,9 +284,11 @@ const createMain = (): HTMLElement => {
 		"",
 		"Organize your bookmarks however you like. Our simple drag-and-drop interface gives you complete control over how you manage your favourite sites."
 	);
+	const moreButton = createButton("More info");
 	const informationContainer = createDiv("info__container", [
 		titleTab,
 		descriptionTab,
+		moreButton,
 	]);
 	const infoTab = createDiv("infoTab__container", [
 		imgContainerTab,
